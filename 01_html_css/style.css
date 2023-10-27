@@ -1,0 +1,12 @@
+h1, h2 {
+    color: blue;
+    text-align: center;
+}
+h3, h6{
+    color: red;
+}
+h4, h5 {
+    color: aqua;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+}
