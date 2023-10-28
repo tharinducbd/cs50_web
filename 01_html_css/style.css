@@ -1,5 +1,5 @@
 p {
-    padding: 20px
+    padding: 10px
 }
 h1, h2 {
     color: blue;
@@ -35,4 +35,8 @@ div {
     font-size: 25px;
     font-weight: bold;
     border: 3px solid red
+}
+#intro_para {
+    font-size: large;
+    color: rgb(116, 151, 19);
 }
