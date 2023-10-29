@@ -1,0 +1,15 @@
+#grid {
+    background-color: green;
+    display: grid;
+    padding: 20px;
+    column-gap: 20px;
+    row-gap: 10px;
+    grid-template-columns: 200px 200px auto; /*To get 03 columns: 200, 200, rest of screen*/
+}
+
+.grid-item {
+    background-color: blue;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+}
