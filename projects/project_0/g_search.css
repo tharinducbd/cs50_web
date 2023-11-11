@@ -3,19 +3,26 @@ img {
 }
 
 input[type=search] {
-    width: 300px;
+    width: 500px;
+    height: 35px;
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-top: 5px;
+    border-radius: 25px;
+    border-width: 1px;
+    padding-left: 10px;
+    border-color: rgb(194, 189, 189);
 }
 
 input[type=submit]{
-    width: 100px;
+    width: 120px;
+    height: 25px;
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
+    border-width: 0cap;
 }
 
 .centered {
