@@ -8,3 +8,6 @@ def say_hello(request):
 
 def greet(request, name):
     return HttpResponse(f"Hello, {name} from the world of Django!!")
+
+
+
