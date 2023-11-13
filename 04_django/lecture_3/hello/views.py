@@ -10,4 +10,5 @@ def greet(request, name):
     return HttpResponse(f"Hello, {name} from the world of Django!!")
 
 
-
+def render_hello(request):
+    return render(request, "hello/render_hello.html")
