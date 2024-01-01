@@ -13,5 +13,6 @@ def flight(request, flight_id):
     flight = Flight.objects.get(pk=flight_id)
     # 'pk' is same as 'id', which is a django's sqlite feature
     return render(request, "flights/flight.html", {
-        "flight": flight
+        "flight": flight,
+        "passengers": flight.passengers.all(), # 'passengers' is the related name!
     })
