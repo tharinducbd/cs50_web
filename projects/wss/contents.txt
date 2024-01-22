@@ -1,0 +1,18 @@
+1. Component definer
+        > Add/ define a new component
+        > Type: pipe, intake, treatment unit, storage, valve ...
+        > Material ? 
+        > 
+
+2. Task definer
+        > FK: component
+        > Frequency
+        > Type: PPM, Operation, Maintenance
+        > FK: Input, unit cost
+        > Quantity
+
+3. Scheme creator
+        > Name, select components
+
+4. Unit costs
+        > Input name, unit price
