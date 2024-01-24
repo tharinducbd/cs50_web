@@ -13,3 +13,9 @@ def greet(request, name):
 
 def index(request):
     return render(request, "welcome/index.html")
+
+
+def greet_2(request, name):
+    return render(request, "welcome/greet_2.html", {
+        "name": name.capitalize()
+    })
