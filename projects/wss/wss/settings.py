@@ -20,6 +20,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'welcome',
+    'idea_logger',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
