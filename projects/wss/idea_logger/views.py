@@ -15,3 +15,7 @@ def index(request):
     return render(request, "idea_logger/index.html", {
         "ideas": ideas
     })
+
+
+def add(request):
+    return render(request, "tasks/add.html")
