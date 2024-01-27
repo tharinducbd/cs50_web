@@ -4,10 +4,12 @@
 {% block body  %}
 
     <h3>Add Task</h3>
-    
+
     <form action="">
         <input type="text" name="idea" placeholder="Type your new idea here">
         <input type="submit" value="Add Idea" size="400">
     </form>
+
+    <a href="{% url 'idea_logger:index' %}">List of ideas</a>
 
 {% endblock %}
