@@ -1,17 +1,11 @@
-<!DOCTYPE html>
+{% extends "idea_logger/layout.html" %}
 
-<html lang="en">
+{% block body %}
 
-    <head>
-        <title>Idea Logger</title>
-    </head>
+    <ul>
+        {% for idea in ideas %}
+            <li>{{ idea }}</li>
+        {% endfor %}
+    </ul>
 
-    <body>
-        <ul>
-            {% for idea in ideas %}
-                <li>{{ idea }}</li>
-            {% endfor %}
-        </ul>
-    </body>
-
-</html>
+{% endblock %}
