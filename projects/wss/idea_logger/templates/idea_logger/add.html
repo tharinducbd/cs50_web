@@ -5,7 +5,7 @@
 
     <h3>Add Task</h3>
 
-    <form action="">
+    <form action="{% url 'idea_logger:add_idea' %}" method="post">
         <input type="text" name="idea" placeholder="Type your new idea here">
         <input type="submit" value="Add Idea" size="400">
     </form>
