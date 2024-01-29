@@ -12,6 +12,12 @@
     <body>
         {% block body %}
         {% endblock %}
+
+        <br><br><br><br><br>
+        <p>Nav Bar Trial</p>
+        <a href="{% url 'idea_logger:index' %}">List of ideas</a><br>
+        <a href="{% url 'idea_logger:add_idea' %}">Add new idea</a><br>
+        <a href="{% url 'idea_logger:add_idea_2' %}">Add new idea - V2: Django Forms</a><br>
     </body>
 
 </html>
