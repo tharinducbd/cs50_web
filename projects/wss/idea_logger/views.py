@@ -1,3 +1,4 @@
+from django import forms
 from django.shortcuts import render
 
 
@@ -10,6 +11,11 @@ ideas = [
 ]
 
 
+class NewIdeaForm(forms.Form):
+    new_idea = forms.CharField(label="New Idea")
+    priority = forms.IntegerField(label="Priority", min_value=1, max_value=5)
+
+
 # Create your views here.
 def index(request):
     return render(request, "idea_logger/index.html", {
@@ -19,3 +25,9 @@ def index(request):
 
 def add(request):
     return render(request, "idea_logger/add.html")
+
+
+def add_2(request):
+    return render(request, "idea_logger/add_2.html", {
+        "form": NewIdeaForm()
+    })
