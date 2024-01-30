@@ -5,7 +5,7 @@
 
     <h3>Add Task</h3>
 
-    <form action="{% url 'idea_logger:add_idea' %}" method="post">
+    <form action="{% url 'idea_logger:add_idea_2' %}" method="post">
         {% csrf_token %}
         {{ form }}
         <input type="submit" value="Submit Idea" size="400">
