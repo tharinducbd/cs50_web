@@ -1,5 +1,7 @@
 from django import forms
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 
 
 ideas = [
@@ -34,6 +36,7 @@ def add_2(request):
             idea = form.cleaned_data["new_idea"]
             print(idea)
             ideas.append(idea)
+            return HttpResponseRedirect(reverse("idea_logger:index"))
         else:
             return render(request, "idea_logger/add_2.html", {
                 "form": form
