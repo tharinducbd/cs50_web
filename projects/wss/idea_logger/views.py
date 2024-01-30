@@ -28,6 +28,17 @@ def add(request):
 
 
 def add_2(request):
+    if request.method == "POST":
+        form = NewIdeaForm(request.POST)
+        if form.is_valid():
+            idea = form.cleaned_data["new_idea"]
+            print(idea)
+            ideas.append(idea)
+        else:
+            return render(request, "idea_logger/add_2.html", {
+                "form": form
+            })
+
     return render(request, "idea_logger/add_2.html", {
         "form": NewIdeaForm()
     })
