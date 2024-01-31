@@ -4,15 +4,6 @@ from django.shortcuts import render
 from django.urls import reverse
 
 
-ideas = [
-    "Including every possible component",
-    "An option to incorporate the size at least approximately",
-    "Auto-generate the inputs required",
-    "The ability to define new components",
-    "The ability to define new inputs for the defined components",
-]
-
-
 class NewIdeaForm(forms.Form):
     new_idea = forms.CharField(label="New Idea")
     priority = forms.IntegerField(label="Priority", min_value=1, max_value=5)
@@ -20,8 +11,10 @@ class NewIdeaForm(forms.Form):
 
 # Create your views here.
 def index(request):
+    if "ideas" not in request.session:
+        request.session["ideas"] = []
     return render(request, "idea_logger/index.html", {
-        "ideas": ideas
+        "ideas": request.session["ideas"]
     })
 
 
@@ -35,7 +28,7 @@ def add_2(request):
         if form.is_valid():
             idea = form.cleaned_data["new_idea"]
             print(idea)
-            ideas.append(idea)
+            request.session["ideas"] += [idea]
             return HttpResponseRedirect(reverse("idea_logger:index"))
         else:
             return render(request, "idea_logger/add_2.html", {
