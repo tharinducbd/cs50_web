@@ -5,6 +5,8 @@
     <ul>
         {% for idea in ideas %}
             <li>{{ idea }}</li>
+        {% empty %}
+            <p>No Ideas Yet!!!</p>
         {% endfor %}
     </ul>
 
