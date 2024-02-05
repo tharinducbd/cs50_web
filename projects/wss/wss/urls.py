@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('welcome/', include("welcome.urls")),
     path('ideas/', include("idea_logger.urls")),
+    path('components/', include("components.urls")),
 ]
