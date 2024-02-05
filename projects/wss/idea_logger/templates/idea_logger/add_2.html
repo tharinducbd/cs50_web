@@ -7,7 +7,7 @@
 
     <form action="{% url 'idea_logger:add_idea_2' %}" method="post">
         {% csrf_token %}
-        {{ form }}
+        {{ form.as_p }}
         <input type="submit" value="Submit Idea" size="400">
     </form>
 
