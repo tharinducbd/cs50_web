@@ -7,6 +7,8 @@ from django.urls import reverse
 class NewIdeaForm(forms.Form):
     new_idea = forms.CharField(label="New Idea")
     priority = forms.IntegerField(label="Priority", min_value=1, max_value=5)
+    main_subject_area = forms.CharField(label="Main Subject Area")
+    sub_subject_area = forms.CharField(label="Secondary Subject Area")
 
 
 # Create your views here.
