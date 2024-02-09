@@ -3,10 +3,10 @@ from django.db import models
 
 # Create your models here.
 class Material(models.Model):
-    material = models.CharField(max_length=64)
+    material_name = models.CharField(max_length=64)
 
     def __str__(self) -> str:
-        return f"{self.material}"
+        return f"{self.material_name}"
 
 
 class Tank(models.Model):
