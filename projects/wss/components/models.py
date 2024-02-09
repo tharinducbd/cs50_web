@@ -11,9 +11,10 @@ class Material(models.Model):
 
 class Tank(models.Model):
     capacity = models.IntegerField()
-    contruction_material = models.ForeignKey(Material,
+    construction_material = models.ForeignKey(Material,
                                              on_delete=models.CASCADE,
                                              related_name="tank_materials")
+    color = models.CharField(max_length=12)
 
     def __str__(self) -> str:
         return f"{self.id}: {self.capacity}"
