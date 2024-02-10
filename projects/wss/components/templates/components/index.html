@@ -1,0 +1,15 @@
+{% extends "components/layout.html" %}
+
+{% block body %}
+
+    <h3>Components</h3>
+
+    <ul>
+        {% for tank in tanks %}
+            <li>{{ tank }}</li>
+        {% empty %}
+            <li>No tanks added.</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
