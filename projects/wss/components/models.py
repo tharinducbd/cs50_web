@@ -17,4 +17,4 @@ class Tank(models.Model):
     color = models.CharField(max_length=12)
 
     def __str__(self) -> str:
-        return f"{self.id}: {self.capacity}"
+        return f"{self.id}: {self.capacity}m3 {self.construction_material}"
