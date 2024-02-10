@@ -5,8 +5,8 @@
     <h3>Components</h3>
 
     <ul>
-        {% for tank in tanks %}
-            <li>{{ tank }}</li>
+        {% for t in tanks %}
+            <li>Tank {{t.id}}: {{ t.construction_material }} {{ t.capacity }} {{ t.color }}</li>
         {% empty %}
             <li>No tanks added.</li>
         {% endfor %}
