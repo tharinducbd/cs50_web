@@ -7,4 +7,5 @@ app_name = "components"
 
 urlpatterns = [
     path("", views.index, name="index"),
+    path("tanks/<int:tank_id>", views.tank, name="tank"),
 ]
