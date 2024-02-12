@@ -2,10 +2,7 @@ from django.db import models
 
 
 # Yes/ No for boolean selects.
-BOOL_CHOICES = (
-    (True, 'Yes'),
-    (False, 'No')
-)
+BOOL_CHOICES = ((True, 'Yes'),(False, 'No'))
 
 
 # Create your models here.
@@ -31,3 +28,12 @@ class Tank(models.Model):
 
     def __str__(self) -> str:
         return f"{self.id}: {self.capacity}m3 {self.construction_material}"
+
+
+class Scheme(models.Model):
+    scheme_name = models.CharField(max_length=64)
+    district = models.CharField(max_length=32)
+    tanks = models.ManyToManyField(Tank, blank=True, related_name="schemes")
+
+    def __str__(self) -> str:
+        return f"{self.district} {self.scheme_name}"
