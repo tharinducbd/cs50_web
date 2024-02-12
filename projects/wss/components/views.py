@@ -14,5 +14,6 @@ def index(request):
 def tank(request, tank_id):
     tank = Tank.objects.get(id=tank_id)
     return render(request, "components/tank.html", {
-        "tank": tank
+        "tank": tank,
+        "schemes": tank.schemes.all()
     })

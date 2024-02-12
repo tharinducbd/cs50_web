@@ -15,4 +15,14 @@
         <li>Has a bulkmeter: {{ tank.has_bulkmeter }}</li>
     </ul>
 
+    <h2>Schemes</h2>
+
+    <ul>
+        {% for scheme in schemes %}
+            <li>{{ scheme }}</li>
+        {% empty %}
+            <li>No schemes...</li>
+        {% endfor %}
+    </ul>
+
 {% endblock %}
