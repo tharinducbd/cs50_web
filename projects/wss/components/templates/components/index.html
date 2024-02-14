@@ -7,7 +7,7 @@
     <h3>Tanks</h3>
     <ul>
         {% for t in tanks %}
-            <li>Tank {{t.id}}: {{ t.construction_material }} {{ t.capacity }} {{ t.color }}</li>
+            <li><a href="{% url 'components:tank' tank_id=t.id %}">Tank {{t.id}}</a>: {{ t.construction_material }} {{ t.capacity }} {{ t.color }}</li>
         {% empty %}
             <li>No tanks added.</li>
         {% endfor %}
