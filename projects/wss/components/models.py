@@ -42,7 +42,7 @@ class TreatmentProcess(models.Model):
     process_name = models.CharField(max_length=100)
 
     def __str__(self) -> str:
-        return f"Model class of {self.process_name}"
+        return f"{self.process_name}"
 
 
 class Scheme(models.Model):
