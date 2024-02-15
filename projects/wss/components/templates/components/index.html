@@ -13,4 +13,22 @@
         {% endfor %}
     </ul>
 
+    <h3>Schemes</h3>
+    <ul>
+        {% for scheme in schemes %}
+            <li>{{ scheme.scheme_name }}</li>
+        {% empty %}
+            <li>No schemes added.</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Treatment Processes</h3>
+    <ul>
+        {% for tp in treatment_processes %}
+            <li>{{ tp.treatment_type }}: {{ tp.process_name }}</li>
+        {% empty %}
+            <li>No treatment processes added yet.</li>
+        {% endfor %}
+    </ul>
+
 {% endblock %}
