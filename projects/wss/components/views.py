@@ -25,6 +25,6 @@ def scheme(request, scheme_id):
     scheme = Scheme.objects.get(id=scheme_id)
     return render(request, "components/scheme.html", {
         "scheme": scheme,
-        "tanks": scheme.sch_tanks.all(),
-        "treatment_processes": scheme.sch_treatments.all()
+        "tanks": scheme.list_tanks.all(),
+        "treatment_processes": scheme.list_treatments.all()
     })
