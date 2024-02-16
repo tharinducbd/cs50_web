@@ -48,8 +48,8 @@ class TreatmentProcess(models.Model):
 class Scheme(models.Model):
     scheme_name = models.CharField(max_length=64)
     district = models.CharField(max_length=32)
-    tanks = models.ManyToManyField(Tank, blank=True, related_name="tanks")
-    treatment = models.ManyToManyField(TreatmentProcess, blank=True, related_name="tps")
+    sch_tanks = models.ManyToManyField(Tank, blank=True, related_name="sch_tanks")
+    sch_treatments = models.ManyToManyField(TreatmentProcess, blank=True, related_name="sch_tps")
 
     def __str__(self) -> str:
         return f"{self.district} {self.scheme_name}"

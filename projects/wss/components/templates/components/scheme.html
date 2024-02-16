@@ -1,0 +1,30 @@
+{% extends 'components/layout.html' %}
+
+{% block body %}
+
+    <h2>Scheme: {{ scheme.id }}</h2>
+
+    <ul>
+        <li>Name of WSS: {{ scheme.scheme_name }}</li>
+        <li>District: {{ scheme.district }}</li>
+    </ul>
+
+    <h2>Tanks</h2>
+    <ul>
+        {% for t in tanks %}
+            <li>{{ t }}</li>
+        {% empty %}
+            <li>No tanks!</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Treatment Processes</h2>
+    <ul>
+        {% for tp in treatment_processes %}
+            <li>{{ tp }}</li>
+        {% empty %}
+            <li>No treatment!</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
