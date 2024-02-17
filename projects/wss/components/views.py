@@ -1,5 +1,6 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 
 from .models import Scheme, Tank, TreatmentProcess
 
@@ -28,3 +29,13 @@ def scheme(request, scheme_id):
         "tanks": scheme.list_tanks.all(),
         "treatment_processes": scheme.list_treatments.all()
     })
+
+def add_tank(request, scheme_id):
+    if request.method == "POST":
+        scheme = Scheme.objects.get(pk=scheme_id)
+
+        tank_id = int(request.POST["tank"])
+        tank = Tank.objects.get(pk=tank_id)
+        tank.sch_tanks.add(scheme)
+        return HttpResponseRedirect(reverse("scheme", args=(scheme_id,)))
+    
