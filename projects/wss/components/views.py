@@ -27,16 +27,17 @@ def scheme(request, scheme_id):
     return render(request, "components/scheme.html", {
         "scheme": scheme,
         "tanks": scheme.list_tanks.all(),
-        "treatment_processes": scheme.list_treatments.all()
+        "treatment_processes": scheme.list_treatments.all(),
+        "unavailable_tanks": Tank.objects.exclude(sch_tanks=scheme).all(),
     })
 
 
 def add_tank(request, scheme_id):
     if request.method == "POST":
-        scheme = Scheme.objects.get(pk=scheme_id)
+        scheme = Scheme.objects.get(id=scheme_id)
 
-        tank_id = int(request.POST["tank"])
-        tank = Tank.objects.get(pk=tank_id)
-        tank.sch_tanks.add(scheme)
+        tank_id = int(request.POST["selected_tank"])
+        new_tank = Tank.objects.get(id=tank_id)
+        new_tank.sch_tanks.add(scheme)
 
-        return HttpResponseRedirect(reverse("scheme", args=(scheme_id,)))
+        return HttpResponseRedirect(reverse("components:scheme", args=(scheme_id,)))

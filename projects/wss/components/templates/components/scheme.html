@@ -27,4 +27,16 @@
         {% endfor %}
     </ul>
 
+    <h2>Add Tank</h2>
+
+    <form action="{% url 'components:add_tank' scheme.id %}" method="post">
+        {% csrf_token %}
+        <select name="selected_tank">
+            {% for tank in unavailable_tanks %}
+                <option value="{{ tank.id }}">{{ tank }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit">
+    </form>
+
 {% endblock %}
