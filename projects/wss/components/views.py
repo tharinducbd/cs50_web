@@ -30,6 +30,7 @@ def scheme(request, scheme_id):
         "treatment_processes": scheme.list_treatments.all()
     })
 
+
 def add_tank(request, scheme_id):
     if request.method == "POST":
         scheme = Scheme.objects.get(pk=scheme_id)
@@ -37,5 +38,5 @@ def add_tank(request, scheme_id):
         tank_id = int(request.POST["tank"])
         tank = Tank.objects.get(pk=tank_id)
         tank.sch_tanks.add(scheme)
+
         return HttpResponseRedirect(reverse("scheme", args=(scheme_id,)))
-    
