@@ -16,7 +16,7 @@
     <h3>Schemes</h3>
     <ul>
         {% for scheme in schemes %}
-            <li>{{ scheme.scheme_name }}</li>
+            <li><a href="{% url 'components:scheme' scheme_id=scheme.id %}">{{ scheme.scheme_name }}</a></li>
         {% empty %}
             <li>No schemes added.</li>
         {% endfor %}
