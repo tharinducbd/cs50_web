@@ -22,4 +22,5 @@ urlpatterns = [
     path('welcome/', include("welcome.urls")),
     path('ideas/', include("idea_logger.urls")),
     path('components/', include("components.urls")),
+    path('users/', include("users.urls")),
 ]
