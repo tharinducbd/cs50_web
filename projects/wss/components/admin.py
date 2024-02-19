@@ -7,6 +7,7 @@ class TankAdmin(admin.ModelAdmin):
     list_display = ("capacity", "construction_material", "has_bulkmeter")
 
 class SchemeAdmin(admin.ModelAdmin):
+    list_display = ("district", "scheme_name", "id")
     filter_horizontal = ("list_treatments",)
 
 # Register your models here.
