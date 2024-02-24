@@ -19,6 +19,10 @@ class Component_Type(models.Model):
     def __str__(self) -> str:
         return f"{self.component_type.capitalize()}"
 
+    class Meta:
+        verbose_name = "Component Type"
+        verbose_name_plural = "Component Types"
+
 
 class Component(models.Model):
     component_type = models.ForeignKey(Component_Type,
@@ -35,3 +39,6 @@ class Task(models.Model):
     task_responsibility = models.CharField(max_length=32, choices=RESPONSIBILITY, default="CT")
     task_interval = models.CharField(max_length=32, choices=INTERVALS, default="DAILY")
     component = models.ManyToManyField(Component, blank=True, related_name="tasks")
+
+    def __str__(self) -> str:
+        return f"{self.task_name.capitalize()} - {self.task_interval} by {self.task_responsibility}"
