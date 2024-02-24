@@ -6,6 +6,12 @@
 
     <h3>Welcome to the basic index page.</h3>
 
-    <p>Content to follow.</p>
+    <ul>
+        {% for comp in comps %}
+        <li>{{ comp }}</li>
+        {% empty %}
+        <li>No components yet.</li>
+        {% endfor %}
+    </ul>
 
 {% endblock %}
