@@ -31,7 +31,7 @@ class Component(models.Model):
     component = models.CharField(max_length=64)
 
     def __str__(self) -> str:
-        return f"Component: {self.component.capitalize()}, Type: {self.component_type}"
+        return f"{self.component_type}: {self.component.capitalize()}"
 
 
 class Task(models.Model):
