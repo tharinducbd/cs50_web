@@ -1,5 +1,13 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import Component, Task
+
+
 def index(request):
-    return render(request, 'tasks/index.html')
+    list_components = Component.objects.all()
+    list_tasks = Task.objects.all()
+
+    return render(request, 'tasks/index.html', {
+        "comps": list_components,
+        "tasks": list_tasks
+    })
