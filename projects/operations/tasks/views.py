@@ -4,10 +4,8 @@ from .models import Component, Task
 
 
 def index(request):
-    list_components = Component.objects.all()
-    list_tasks = Task.objects.all()
+    list_components = Component.objects.all().order_by('component_type', 'component')
 
     return render(request, 'tasks/index.html', {
         "comps": list_components,
-        "tasks": list_tasks
     })
