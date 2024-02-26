@@ -1,0 +1,38 @@
+{% extends 'tasks/layout.html' %}
+
+{% block body %}
+
+    <h3>Add new task</h3>
+
+    <form action="{% url 'tasks:add_task' %}" method="post">
+        {% csrf_token %}
+
+        <label for="component">Component:</label>
+        <select name="component">
+            {% for c in components %}
+                <option value="{{ c.id }}">{{ c }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="task_name">Task: </label>
+        <input type="text" name="task_name" size="100"><br><br>
+
+        <label for="task_interval">Task interval</label>
+        <select name="task_interval">
+            {% for i in intervals %}
+                <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="task_responsibility">Responsibility</label>
+        <select name="task_responsibility">
+            {% for r in responsibilities %}
+                <option value="{{ r }}">{{ r }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <input type="submit">
+
+    </form>
+
+{% endblock %}

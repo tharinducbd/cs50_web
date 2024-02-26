@@ -35,10 +35,10 @@ class Component(models.Model):
 
 
 class Task(models.Model):
-    task_name = models.CharField(max_length = 128)
-    task_responsibility = models.CharField(max_length=32, choices=RESPONSIBILITY, default="CT")
-    task_interval = models.CharField(max_length=32, choices=INTERVALS, default="DAILY")
     component = models.ManyToManyField(Component, blank=True, related_name="tasks")
+    task_name = models.CharField(max_length = 128)
+    task_interval = models.CharField(max_length=32, choices=INTERVALS, default="DAILY")
+    task_responsibility = models.CharField(max_length=32, choices=RESPONSIBILITY, default="CT")
 
     def __str__(self) -> str:
         return f"{self.task_name.capitalize()} - {self.task_interval} by {self.task_responsibility}"
