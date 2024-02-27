@@ -26,7 +26,8 @@ class AddTaskForm(forms.Form):
     list_components = Component.objects.all().order_by('component_type', 'component')
 
     component = forms.ModelChoiceField(queryset=list_components,
-                                       label="Component")
+                                       label="Component",
+                                       empty_label="Select component")
     task_name = forms.CharField(label="Task",max_length=200, initial="Enter task")
     task_interval = forms.ChoiceField(choices=INTERVALS, label="Task interval")
     task_responsibility = forms.ChoiceField(choices=RESPONSIBILITY, label="Responsibility")
