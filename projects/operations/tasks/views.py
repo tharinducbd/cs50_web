@@ -1,6 +1,7 @@
 from django import forms
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 
 from .models import Component, Component_Type, Task
 from .models import INTERVALS, RESPONSIBILITY
@@ -15,11 +16,17 @@ def index(request):
 
 def add_task(request):
     if request.method == "POST":
-        comp_id = request.POST["comp_id"]
+        comp_ids = request.POST.getlist("comp_ids[]")
         task_name = request.POST["task_name"]
         task_interval = request.POST["task_interval"]
         task_responsibility = request.POST["task_responsibility"]
-        # create and save the object
+
+        new_task = Task(component=Component.objects.get(id=comp_ids),
+                        task_name=task_name,
+                        task_interval=task_interval,
+                        task_responsibility=task_responsibility)
+        new_task.save()
+        return HttpResponseRedirect(reverse("tasks:index"))
 
     list_components = Component.objects.all().order_by('component_type', 'component')
     return render(request, 'tasks/add_task.html', {

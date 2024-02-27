@@ -8,7 +8,7 @@
         {% csrf_token %}
 
         <label for="comp_id">Component:</label>
-        <select name="comp_id">
+        <select name="comp_ids" multiple>
             {% for c in components %}
                 <option value="{{ c.id }}">{{ c }}</option>
             {% endfor %}
