@@ -14,6 +14,13 @@ def index(request):
 
 
 def add_task(request):
+    if request.method == "POST":
+        comp_id = request.POST["comp_id"]
+        task_name = request.POST["task_name"]
+        task_interval = request.POST["task_interval"]
+        task_responsibility = request.POST["task_responsibility"]
+        # create and save the object
+
     list_components = Component.objects.all().order_by('component_type', 'component')
     return render(request, 'tasks/add_task.html', {
         "components": list_components,
@@ -31,7 +38,6 @@ class AddTaskForm(forms.Form):
     task_name = forms.CharField(label="Task",max_length=200, initial="Enter task")
     task_interval = forms.ChoiceField(choices=INTERVALS, label="Task interval")
     task_responsibility = forms.ChoiceField(choices=RESPONSIBILITY, label="Responsibility")
-    # refer documentation on form fields!
 
 
 def add_task_2(request):
