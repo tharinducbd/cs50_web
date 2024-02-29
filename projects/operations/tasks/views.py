@@ -16,16 +16,22 @@ def index(request):
 
 def add_task(request):
     if request.method == "POST":
-        comp_ids = request.POST.getlist("comp_ids[]")
+        comp_ids = request.POST.getlist("comp_ids")
         task_name = request.POST["task_name"]
         task_interval = request.POST["task_interval"]
         task_responsibility = request.POST["task_responsibility"]
 
-        new_task = Task(component=Component.objects.get(id=comp_ids),
-                        task_name=task_name,
+        new_task = Task(task_name=task_name,
                         task_interval=task_interval,
                         task_responsibility=task_responsibility)
         new_task.save()
+
+        for x in comp_ids:
+            c_id = int(x)
+            comp = Component.objects.get(id=c_id)
+            new_task.component.add(comp)
+        new_task.save()
+
         return HttpResponseRedirect(reverse("tasks:index"))
 
     list_components = Component.objects.all().order_by('component_type', 'component')
