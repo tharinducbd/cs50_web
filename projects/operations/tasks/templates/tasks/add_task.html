@@ -7,7 +7,7 @@
     <form action="{% url 'tasks:add_task' %}" method="post">
         {% csrf_token %}
 
-        <label for="comp_id">Component:</label>
+        <label for="comp_ids">Component:</label>
         <select name="comp_ids" multiple>
             {% for c in components %}
                 <option value="{{ c.id }}">{{ c }}</option>
