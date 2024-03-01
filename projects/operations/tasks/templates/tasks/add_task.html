@@ -7,18 +7,18 @@
     <form action="{% url 'tasks:add_task' %}" method="post">
         {% csrf_token %}
 
-        <label for="comp_ids">Component:</label>
-        <select name="comp_ids" multiple>
+        <label for="field_comps">Component:</label>
+        <select id="field_comps" name="comp_ids" multiple>
             {% for c in components %}
                 <option value="{{ c.id }}">{{ c }}</option>
             {% endfor %}
         </select><br><br>
 
-        <label for="task_name">Task: </label>
-        <input type="text" name="task_name" size="100"><br><br>
+        <label for="field_task_name">Task: </label>
+        <input id="field_task_name" type="text" name="task_name" size="100"><br><br>
 
-        <label for="task_interval">Task interval</label>
-        <select name="task_interval">
+        <label for="field_task_interval">Task interval</label>
+        <select id="field_task_interval" name="task_interval">
             {% for i in intervals %}
                 <option value="{{ i }}">{{ i }}</option>
             {% endfor %}
@@ -31,7 +31,8 @@
             {% endfor %}
         </select><br><br>
 
-        <input type="submit">
+        <input type="submit" name="save_task" value="Save task">
+        <input type="submit" name="save_and_add" value="Save and add another">
 
     </form>
 

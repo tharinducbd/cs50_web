@@ -27,12 +27,14 @@ def add_task(request):
         new_task.save()
 
         for x in comp_ids:
-            c_id = int(x)
-            comp = Component.objects.get(id=c_id)
+            comp = Component.objects.get(id=int(x))
             new_task.component.add(comp)
         new_task.save()
 
-        return HttpResponseRedirect(reverse("tasks:index"))
+        if 'save_task' in request.POST:
+            return HttpResponseRedirect(reverse("tasks:index"))
+        elif 'save_and_add' in request.POST:
+            return HttpResponseRedirect(reverse("tasks:add_task"))
 
     list_components = Component.objects.all().order_by('component_type', 'component')
     return render(request, 'tasks/add_task.html', {
