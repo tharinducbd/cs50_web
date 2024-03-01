@@ -4,13 +4,23 @@
 
     <h1>O&M Tasks</h1>
 
-    <h3>Welcome to the basic index page.</h3>
+    <p>Welcome to O&M tasks, where we define all sorts of O&M related tasks.</p>
 
+    <h3>List of components</h3>
     <ul>
         {% for comp in comps %}
-        <li>{{ comp }}</li>
+            <li>{{ comp }}</li>
         {% empty %}
-        <li>No components yet.</li>
+            <li>No components yet.</li>
+        {% endfor %}
+    </ul>
+
+    <h3>List of tasks:</h3>
+    <ul>
+        {% for task in tasks %}
+            <li>{{ task.task_name }} by {{ task.task_responsibility }}, {{ task.task_interval }}.</li>
+        {% empty %}
+            <li>No tasks yet.</li>
         {% endfor %}
     </ul>
 

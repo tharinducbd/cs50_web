@@ -9,8 +9,10 @@ from .models import INTERVALS, RESPONSIBILITY
 
 def index(request):
     list_components = Component.objects.all().order_by('component_type', 'component')
+    list_tasks = Task.objects.all().order_by('task_name', 'task_responsibility')
     return render(request, 'tasks/index.html', {
         "comps": list_components,
+        "tasks": list_tasks,
     })
 
 
