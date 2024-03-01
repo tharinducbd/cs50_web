@@ -16,8 +16,12 @@ def index(request):
     })
 
 
+# Method 1: Using HTML forms
 def add_task(request):
     if request.method == "POST":
+        if 'clear_fields' in request.POST:
+            return HttpResponseRedirect(reverse("tasks:add_task"))
+
         comp_ids = request.POST.getlist("comp_ids")
         task_name = request.POST["task_name"]
         task_interval = request.POST["task_interval"]
@@ -35,7 +39,7 @@ def add_task(request):
 
         if 'save_task' in request.POST:
             return HttpResponseRedirect(reverse("tasks:index"))
-        elif 'save_and_add' in request.POST:
+        if 'save_and_add' in request.POST:
             return HttpResponseRedirect(reverse("tasks:add_task"))
 
     list_components = Component.objects.all().order_by('component_type', 'component')
@@ -46,6 +50,7 @@ def add_task(request):
     })
 
 
+# Method 2: Using forms.Form
 class AddTaskForm(forms.Form):
     list_components = Component.objects.all().order_by('component_type', 'component')
 
@@ -61,3 +66,6 @@ def add_task_2(request):
     return render(request, 'tasks/add_task_2.html',{
         "form": AddTaskForm()
     })
+
+
+# Method 3: Model forms?
