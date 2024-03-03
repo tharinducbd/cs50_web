@@ -54,7 +54,7 @@ class AddTaskForm(forms.Form):
     # component = forms.ModelChoiceField(queryset=list_components,
     #                                    label="Component",
     #                                    empty_label="Select component")
-    component = forms.MultipleChoiceField(choices=enumerate(list_components))
+    components = forms.MultipleChoiceField(choices=enumerate(list_components))
     task_name = forms.CharField(label="Task",
                                 max_length=200,
                                 # initial="Enter task", << 'delete n enter' kind of placeholder.
@@ -67,6 +67,7 @@ class AddTaskForm(forms.Form):
 
 def add_task_2(request):
     if request.method == 'POST':
+        comp_ids = request.POST.getlist("component")
         pass
     return render(request, 'tasks/add_task_2.html',{
         "form": AddTaskForm()
