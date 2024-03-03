@@ -3,9 +3,14 @@
 {% block body %}
 
     <form action="{% url 'tasks:add_task_2' %}" method="post">
+
         {% csrf_token %}
         {{ form.as_p }}
+
         <input type="submit" value="Submit" size="50">
+        <input type="submit" name="save_and_add" value="Save and add another">
+        <input type="submit" name="clear_fields" value="Clear all data">
+
     </form>
 
 {% endblock %}
