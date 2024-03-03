@@ -19,9 +19,6 @@ def index(request):
 # Method 1: Using HTML forms
 def add_task(request):
     if request.method == "POST":
-        if 'clear_fields' in request.POST:
-            return HttpResponseRedirect(reverse("tasks:add_task"))
-
         comp_ids = request.POST.getlist("comp_ids")
         task_name = request.POST["task_name"]
         task_interval = request.POST["task_interval"]
@@ -54,15 +51,23 @@ def add_task(request):
 class AddTaskForm(forms.Form):
     list_components = Component.objects.all().order_by('component_type', 'component')
 
-    component = forms.ModelChoiceField(queryset=list_components,
-                                       label="Component",
-                                       empty_label="Select component")
-    task_name = forms.CharField(label="Task", max_length=200, initial="Enter task")
+    # component = forms.ModelChoiceField(queryset=list_components,
+    #                                    label="Component",
+    #                                    empty_label="Select component")
+    component = forms.MultipleChoiceField(choices=enumerate(list_components))
+    task_name = forms.CharField(label="Task",
+                                max_length=200,
+                                # initial="Enter task", << 'delete n enter' kind of placeholder.
+                                widget=forms.Textarea(attrs={
+                                    'placeholder': 'Enter task',
+                                    'rows': 3, 'columns': 70,}),)
     task_interval = forms.ChoiceField(choices=INTERVALS, label="Task interval")
     task_responsibility = forms.ChoiceField(choices=RESPONSIBILITY, label="Responsibility")
 
 
 def add_task_2(request):
+    if request.method == 'POST':
+        pass
     return render(request, 'tasks/add_task_2.html',{
         "form": AddTaskForm()
     })

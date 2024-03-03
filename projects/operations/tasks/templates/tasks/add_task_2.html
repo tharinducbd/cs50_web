@@ -9,8 +9,10 @@
 
         <input type="submit" value="Submit" size="50">
         <input type="submit" name="save_and_add" value="Save and add another">
-        <input type="submit" name="clear_fields" value="Clear all data">
 
     </form>
+    
+    <br><br><a href="{% url 'tasks:add_task_2' %}" type="button">Clear all data</a>
+    <br><a href="{% url 'tasks:index' %}">Back to Index page</a>
 
 {% endblock %}

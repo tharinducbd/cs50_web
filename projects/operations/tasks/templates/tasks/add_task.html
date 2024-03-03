@@ -8,14 +8,14 @@
         {% csrf_token %}
 
         <label for="field_comps">Component:</label>
-        <select id="field_comps" name="comp_ids" multiple>
+        <select id="field_comps" name="comp_ids" multiple required>
             {% for c in components %}
                 <option value="{{ c.id }}">{{ c }}</option>
             {% endfor %}
         </select><br><br>
 
         <label for="field_task_name">Task: </label>
-        <input id="field_task_name" type="text" name="task_name" size="100"><br><br>
+        <input id="field_task_name" type="text" name="task_name" size="100" required><br><br>
 
         <label for="field_task_interval">Task interval</label>
         <select id="field_task_interval" name="task_interval">
@@ -33,10 +33,10 @@
 
         <input type="submit" name="save_task" value="Save task">
         <input type="submit" name="save_and_add" value="Save and add another">
-        <input type="submit" name="clear_fields" value="Clear all data">
 
     </form>
 
-    <br><br><a href="{% url 'tasks:index' %}">Back to Index page</a>
+    <br><br><a href="{% url 'tasks:add_task' %}" type="button">Clear all data</a>
+    <br><a href="{% url 'tasks:index' %}">Back to Index page</a>
 
 {% endblock %}
