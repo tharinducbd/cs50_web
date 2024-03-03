@@ -67,8 +67,30 @@ class AddTaskForm(forms.Form):
 
 def add_task_2(request):
     if request.method == 'POST':
-        comp_ids = request.POST.getlist("component")
-        pass
+        comp_ids = request.POST.getlist("components")
+        task_name = request.POST["task_name"]
+        task_interval = request.POST["task_interval"]
+        task_responsibility = request.POST["task_responsibility"]
+
+
+        new_task = Task(task_name=task_name,
+                        task_interval=task_interval,
+                        task_responsibility=task_responsibility)
+        new_task.save()
+
+        # !! something is off with comp id.. wrong things get assigned.
+
+        for x in comp_ids:
+            comp = Component.objects.get(id=int(x))
+            new_task.component.add(comp)
+        new_task.save()
+
+        if 'save_task' in request.POST:
+            return HttpResponseRedirect(reverse("tasks:index"))
+        if 'save_and_add' in request.POST:
+            return HttpResponseRedirect(reverse("tasks:add_task"))
+
+
     return render(request, 'tasks/add_task_2.html',{
         "form": AddTaskForm()
     })
