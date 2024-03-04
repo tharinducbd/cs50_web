@@ -51,10 +51,15 @@ def add_task(request):
 class AddTaskForm(forms.Form):
     list_components = Component.objects.all().order_by('component_type', 'component')
 
+    my_list = []
+    for item in list_components:
+        temp_tuple = (item.id, item)
+        my_list.append(temp_tuple)
+
     # component = forms.ModelChoiceField(queryset=list_components,
     #                                    label="Component",
     #                                    empty_label="Select component")
-    components = forms.MultipleChoiceField(choices=enumerate(list_components))
+    components = forms.MultipleChoiceField(choices=my_list)
     task_name = forms.CharField(label="Task",
                                 max_length=200,
                                 # initial="Enter task", << 'delete n enter' kind of placeholder.
@@ -72,13 +77,10 @@ def add_task_2(request):
         task_interval = request.POST["task_interval"]
         task_responsibility = request.POST["task_responsibility"]
 
-
         new_task = Task(task_name=task_name,
                         task_interval=task_interval,
                         task_responsibility=task_responsibility)
         new_task.save()
-
-        # !! something is off with comp id.. wrong things get assigned.
 
         for x in comp_ids:
             comp = Component.objects.get(id=int(x))
