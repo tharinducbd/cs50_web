@@ -1,4 +1,3 @@
-from django import forms
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
@@ -6,6 +5,7 @@ from django.urls import reverse
 from .models import Component, Component_Type, Task
 from .models import INTERVALS, RESPONSIBILITY
 
+from .forms import AddTaskForm
 
 def index(request):
     list_components = Component.objects.all().order_by('component_type', 'component')
@@ -48,28 +48,6 @@ def add_task(request):
 
 
 # Method 2: Using forms.Form
-class AddTaskForm(forms.Form):
-    list_components = Component.objects.all().order_by('component_type', 'component')
-
-    my_list = []
-    for item in list_components:
-        temp_tuple = (item.id, item)
-        my_list.append(temp_tuple)
-
-    # component = forms.ModelChoiceField(queryset=list_components,
-    #                                    label="Component",
-    #                                    empty_label="Select component")
-    components = forms.MultipleChoiceField(choices=my_list)
-    task_name = forms.CharField(label="Task",
-                                max_length=200,
-                                # initial="Enter task", << 'delete n enter' kind of placeholder.
-                                widget=forms.Textarea(attrs={
-                                    'placeholder': 'Enter task',
-                                    'rows': 3, 'columns': 70,}),)
-    task_interval = forms.ChoiceField(choices=INTERVALS, label="Task interval")
-    task_responsibility = forms.ChoiceField(choices=RESPONSIBILITY, label="Responsibility")
-
-
 def add_task_2(request):
     if request.method == 'POST':
         comp_ids = request.POST.getlist("components")
@@ -91,7 +69,6 @@ def add_task_2(request):
             return HttpResponseRedirect(reverse("tasks:index"))
         if 'save_and_add' in request.POST:
             return HttpResponseRedirect(reverse("tasks:add_task"))
-
 
     return render(request, 'tasks/add_task_2.html',{
         "form": AddTaskForm()
