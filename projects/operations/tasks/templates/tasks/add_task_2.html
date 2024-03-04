@@ -2,12 +2,14 @@
 
 {% block body %}
 
+    <h3>Add new task V2: forms.Form</h3>
+
     <form action="{% url 'tasks:add_task_2' %}" method="post">
 
         {% csrf_token %}
         {{ form.as_p }}
 
-        <input type="submit" value="Save task" size="50">
+        <input type="submit" name="save_task" value="Save task" size="50">
         <input type="submit" name="save_and_add" value="Save and add another">
 
     </form>
