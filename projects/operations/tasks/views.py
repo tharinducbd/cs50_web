@@ -96,6 +96,3 @@ def add_task_2(request):
     return render(request, 'tasks/add_task_2.html',{
         "form": AddTaskForm()
     })
-
-
-# Method 3: Model forms?
