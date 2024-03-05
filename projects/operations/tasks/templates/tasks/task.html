@@ -1,0 +1,22 @@
+{% extends 'tasks/layout.html' %}
+
+{% block body %}
+
+    <h3>{{ task.id }}: {{ task }}</h3>
+    <ul>
+        <li>Task Name: {{ task.task_name }}</li>
+        <li>Responsibility: {{ task.task_responsibility }}</li>
+        <li>Performing Interval: {{ task.task_interval }}</li>
+    </ul>
+
+    <h5>List of components</h5>
+    <ul>
+        {% for item in components %}
+            <li>{{ item }}</li>
+        {% empty %}
+        {% endfor %}
+    </ul>
+
+    <br><a href="{% url 'tasks:index' %}">Back to Index page</a>
+
+{% endblock %}

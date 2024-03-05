@@ -31,7 +31,7 @@ def add_task(request):
 
         for x in comp_ids:
             comp = Component.objects.get(id=int(x))
-            new_task.component.add(comp)
+            new_task.components.add(comp)
         new_task.save()
 
         if 'save_task' in request.POST:
@@ -62,7 +62,7 @@ def add_task_2(request):
 
         for x in comp_ids:
             comp = Component.objects.get(id=int(x))
-            new_task.component.add(comp)
+            new_task.components.add(comp)
         new_task.save()
 
         if 'save_task' in request.POST:
@@ -72,4 +72,11 @@ def add_task_2(request):
 
     return render(request, 'tasks/add_task_2.html',{
         "form": AddTaskForm()
+    })
+
+
+def view_task(request, task_id):
+    task = Task.objects.get(id=task_id)
+    return render(request, 'tasks/task.html', {
+        'task': task
     })

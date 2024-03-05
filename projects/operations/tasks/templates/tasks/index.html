@@ -18,7 +18,11 @@
     <h3>List of tasks:</h3>
     <ul>
         {% for task in tasks %}
-            <li>{{ task.task_name }} by {{ task.task_responsibility }}, {{ task.task_interval }}.</li>
+            <li>
+                <a href="{% url 'tasks:view_task' task_id=task.id %}">
+                    {{ task.task_name }} by {{ task.task_responsibility }}, {{ task.task_interval }}
+                </a>
+            </li>
         {% empty %}
             <li>No tasks yet.</li>
         {% endfor %}
