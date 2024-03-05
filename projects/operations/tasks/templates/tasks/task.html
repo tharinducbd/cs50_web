@@ -3,16 +3,27 @@
 {% block body %}
 
     <h3>{{ task.id }}: {{ task }}</h3>
+
+    <h5>Task summary</h5>
     <ul>
         <li>Task Name: {{ task.task_name }}</li>
         <li>Responsibility: {{ task.task_responsibility }}</li>
         <li>Performing Interval: {{ task.task_interval }}</li>
     </ul>
 
-    <h5>List of components</h5>
+    <h5>Applicable components</h5>
     <ul>
-        {% for item in components %}
+        {% for item in comps %}
             <li>{{ item }}</li>
+        {% empty %}
+            <li>No components.</li>
+        {% endfor %}
+    </ul>
+
+    <h5>Non-applicable components (only for demonstrating .exclude()...)</h5>
+    <ul>
+        {% for x in non_comps %}
+            <li>{{ x }}</li>
         {% empty %}
         {% endfor %}
     </ul>

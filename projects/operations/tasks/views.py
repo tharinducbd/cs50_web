@@ -78,5 +78,7 @@ def add_task_2(request):
 def view_task(request, task_id):
     task = Task.objects.get(id=task_id)
     return render(request, 'tasks/task.html', {
-        'task': task
+        'task': task,
+        'comps': task.components.all(),
+        'non_comps': Component.objects.exclude(tasks=task).all()
     })
