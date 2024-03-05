@@ -6,7 +6,7 @@ from .models import Component_Type, Component, Task
 class TaskAdmin(admin.ModelAdmin):
     ordering = ("task_name", "task_responsibility",)
     list_display = ("task_name", "task_responsibility", "task_interval")
-    filter_horizontal = ("component",)
+    filter_horizontal = ("components",)
 
 
 class Component_TypeAdmin(admin.ModelAdmin):
