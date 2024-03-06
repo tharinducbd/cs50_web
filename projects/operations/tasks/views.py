@@ -101,3 +101,8 @@ def view_task(request, task_id):
         'comps': task.components.all(),
         'non_comps': Component.objects.exclude(tasks=task).all()
     })
+
+
+def append_task_comp(request, task_id):
+    if request.method == 'POST':
+        task = Task.objects.get(id=task_id)

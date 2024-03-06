@@ -28,6 +28,17 @@
         {% endfor %}
     </ul>
 
+    <h5>Append component</h5>
+    <form action="{% url 'tasks:append_comp_to_task' %}" method="post">
+        {% csrf_token %}
+        <select name="selected_comp">
+            {% for comp in non_comps %}
+                <option value="{{ comp.id }}">{{ comp }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit">
+    </form>
+
     <br><a href="{% url 'tasks:index' %}">Back to Index page</a>
 
 {% endblock %}
