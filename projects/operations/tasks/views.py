@@ -99,10 +99,16 @@ def view_task(request, task_id):
     return render(request, 'tasks/task.html', {
         'task': task,
         'comps': task.components.all(),
-        'non_comps': Component.objects.exclude(tasks=task).all()
+        'non_comps': Component.objects.exclude(tasks=task).all().order_by('component_type', 'component')
     })
 
 
 def append_task_comp(request, task_id):
     if request.method == 'POST':
         task = Task.objects.get(id=task_id)
+        
+        comp_id = int(request.POST['selected_comp'])
+        comp = Component.objects.get(id=comp_id)
+        comp.tasks.add(task)
+        
+        return HttpResponseRedirect(reverse("tasks:view_task", args=(task_id,)))
