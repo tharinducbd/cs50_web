@@ -18,8 +18,18 @@ def index(request):
 
 def add_component(request):
     if request.method == 'POST':
-        # handle post
-        pass
+        c_type = request.POST["component_type"]
+        c_name = request.POST["component"]
+
+        new_comp = Component(component_type = Component_Type.objects.get(id=int(c_type)),
+                             component = c_name)
+        new_comp.save()
+
+        if 'save_comp' in request.POST:
+            return HttpResponseRedirect(reverse("tasks:index"))
+        if 'save_and_add' in request.POST:
+            return HttpResponseRedirect(reverse("tasks:add_component"))
+
     return render(request, 'tasks/add_component.html', {
         'form': AddComponentForm()
     })
