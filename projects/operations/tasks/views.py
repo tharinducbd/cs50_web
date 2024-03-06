@@ -5,7 +5,7 @@ from django.urls import reverse
 from .models import Component, Component_Type, Task
 from .models import INTERVALS, RESPONSIBILITY
 
-from .forms import AddTaskForm
+from .forms import AddComponentForm, AddTaskForm
 
 def index(request):
     list_components = Component.objects.all().order_by('component_type', 'component')
@@ -13,6 +13,15 @@ def index(request):
     return render(request, 'tasks/index.html', {
         "comps": list_components,
         "tasks": list_tasks,
+    })
+
+
+def add_component(request):
+    if request.method == 'POST':
+        # handle post
+        pass
+    return render(request, 'tasks/add_component.html', {
+        'form': AddComponentForm()
     })
 
 
