@@ -25,18 +25,25 @@
         {% for x in non_comps %}
             <li>{{ x }}</li>
         {% empty %}
+            <li>No N/A components</li>
         {% endfor %}
     </ul>
 
     <h5>Append component</h5>
     <form action="{% url 'tasks:append_comp_to_task' task_id=task.id %}" method="post">
         {% csrf_token %}
-        <select name="selected_comp">
-            {% for comp in non_comps %}
-                <option value="{{ comp.id }}">{{ comp }}</option>
-            {% endfor %}
-        </select>
-        <input type="submit" value="Add" >
+
+        {% if non_comps %}
+            <select name="selected_comp">
+                {% for comp in non_comps %}
+                    <option value="{{ comp.id }}">{{ comp }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Add" >
+        {% else %}
+            <ul><li>All components already added!</li></ul>
+        {% endif %}
+
     </form>
 
     <br><a href="{% url 'tasks:index' %}">Back to Index page</a>
