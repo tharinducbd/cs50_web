@@ -4,12 +4,12 @@ from django.shortcuts import render
 from .models import Question
 
 def index(request):
-    latest_question_obj_list = Question.objects.order_by("-pub_date")[:5]
+    latest_question_list = Question.objects.order_by("-pub_date")[:5]
+    context = {
+        "latest_question_list": latest_question_list
+    }
 
-    question_text_list = [q.question_text for q in latest_question_obj_list]
-    output = ", ".join(question_text_list)
-
-    return HttpResponse(output)
+    return render(request, 'polls/index.html', context)
 
 
 def detail(request, question_id):
