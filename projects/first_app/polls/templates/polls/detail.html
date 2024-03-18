@@ -1,12 +1,3 @@
-<h2>{{ question.question_text }}</h2>
-
-<ul>
-    {% for choice in question.choice_set.all %}
-        <li>{{ choice.choice_text }}</li>
-    {% empty %}
-        <li>No choices for this question yet</li>
-    {% endfor %}
-</ul>
 
 <form action="{% url 'polls:vote' question_id=question.id %}" method="post">
     {% csrf_token %}
