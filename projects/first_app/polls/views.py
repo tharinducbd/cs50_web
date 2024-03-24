@@ -31,8 +31,8 @@ class ResultView(generic.DetailView):
 #     return render(request, "polls/results.html", {"question": question})
 
 
-def vote(request, pk):
-    question = get_object_or_404(Question, id=pk)
+def vote(request, question_id):
+    question = get_object_or_404(Question, id=question_id)
     try:
         selected_choice = question.choice_set.get(id=request.POST["choice"])
     except (KeyError, Choice.DoesNotExist):
@@ -47,4 +47,4 @@ def vote(request, pk):
     else:
         selected_choice.votes = F("votes") + 1
         selected_choice.save()
-        return HttpResponseRedirect(reverse("polls:results", args=(pk,)))
+        return HttpResponseRedirect(reverse("polls:results", args=(question_id,)))
