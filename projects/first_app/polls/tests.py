@@ -7,6 +7,7 @@ from django.utils import timezone
 from .models import Question
 
 
+# Model tests - Question
 class QuestionModelTests(TestCase):
     def test_was_published_recently_with_future_question(self):
         """
@@ -46,6 +47,7 @@ def create_question(question_text, days):
     return Question.objects.create(question_text=question_text, pub_date=time)
 
 
+# View tests - IndexView
 class QuestionIndexViewTests(TestCase):
     def test_no_questions(self):
         """
@@ -99,3 +101,16 @@ class QuestionIndexViewTests(TestCase):
         self.assertQuerySetEqual(
             response.context["latest_question_list"], [question_2, question_1],
         )
+
+
+# View tests - DetailView
+class QuestionDetailViewTests(TestCase):
+    def test_future_question(self):
+        """
+        The detail view of a question with a pub_date in the future returns
+        a 404 not found.
+        """
+        future_question = create_question(question_text="Future Question", days=5)
+        url = reverse("polls:detail", args=(future_question.id,))
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 404)
