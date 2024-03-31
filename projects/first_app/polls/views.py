@@ -19,7 +19,18 @@ class IndexView(generic.ListView):
         Return the last five published questions (not including those set to
         be published in the future).
         """
-        return Question.objects.filter(pub_date__lte=timezone.now()).order_by("-pub_date")[:5]
+        # return Question.objects.filter(pub_date__lte=timezone.now()).order_by("-pub_date")[:5]
+        past_questions = Question.objects.filter(pub_date__lte=timezone.now()).order_by("-pub_date")
+        for q in past_questions:
+            try:
+                q_choices = q.choice_set
+                if len(q_choices.all()) != 0:
+                    print(q_choices.all())
+                    print(len(q_choices.all()))
+            except:
+                print("no choices found")
+                continue
+        return past_questions[:5]
 
 
 class DetailView(generic.DetailView):
@@ -36,6 +47,12 @@ class DetailView(generic.DetailView):
 class ResultView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
+
+    def get_queryset(self):
+        """
+        Exclude any questions that aren't published yet.
+        """
+        return Question.objects.filter(pub_date__lte=timezone.now())
 
 
 # def results(request, question_id):
