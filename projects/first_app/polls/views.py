@@ -19,18 +19,13 @@ class IndexView(generic.ListView):
         Return the last five published questions (not including those set to
         be published in the future).
         """
-        # return Question.objects.filter(pub_date__lte=timezone.now()).order_by("-pub_date")[:5]
         past_questions = Question.objects.filter(pub_date__lte=timezone.now()).order_by("-pub_date")
+        past_questions_with_choices = []
         for q in past_questions:
-            try:
-                q_choices = q.choice_set
-                if len(q_choices.all()) != 0:
-                    print(q_choices.all())
-                    print(len(q_choices.all()))
-            except:
-                print("no choices found")
-                continue
-        return past_questions[:5]
+            if len(q.choice_set.all()) != 0:
+                # print(len(q.choice_set.all()), q.choice_set.all())
+                past_questions_with_choices.append(q)
+        return past_questions_with_choices[:5]
 
 
 class DetailView(generic.DetailView):
