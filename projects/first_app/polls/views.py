@@ -23,7 +23,6 @@ class IndexView(generic.ListView):
         past_questions_with_choices = []
         for q in past_questions:
             if len(q.choice_set.all()) != 0:
-                # print(len(q.choice_set.all()), q.choice_set.all())
                 past_questions_with_choices.append(q)
         return past_questions_with_choices[:5]
 
