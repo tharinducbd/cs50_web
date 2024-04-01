@@ -1,5 +1,6 @@
 from typing import Any
 from django.db.models import F
+from django.db.models.base import Model as Model
 from django.db.models.query import QuerySet
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
@@ -8,6 +9,14 @@ from django.utils import timezone
 from django.views import generic
 
 from .models import Choice, Question
+
+
+# Works on IndexView(), but not used for now.
+def check_choice_availability(question):
+    if len(question.choice_set.all()) != 0:
+        return True
+    else:
+        return False
 
 
 class IndexView(generic.ListView):
