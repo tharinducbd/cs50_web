@@ -4,8 +4,13 @@ from .models import Question, Choice
 
 
 class QuestionAdmin(admin.ModelAdmin):
+    # Options for the 'list view' of questions
     ordering = ("id",)
-    list_display = ("id", "question_text", "pub_date",)
+    list_display = ("question_text", "id", "pub_date",)
+
+    # Options for the 'detailed view' of questions
+    fields = ["pub_date", "question_text"]
+
 
 class ChoiceAdmin(admin.ModelAdmin):
     ordering = ("question", "choice_text",)
