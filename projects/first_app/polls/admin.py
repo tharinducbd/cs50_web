@@ -9,7 +9,13 @@ class QuestionAdmin(admin.ModelAdmin):
     list_display = ("question_text", "id", "pub_date",)
 
     # Options for the 'detailed view' of questions
-    fields = ["pub_date", "question_text"]
+    # fields = ["pub_date", "question_text"]
+
+    # Options for the 'detailed view' of questions: defining 'field sets'
+    fieldsets = [
+        (None, {"fields": ["question_text",]}),
+        ("Date information", {"fields": ["pub_date", ]}),
+    ]
 
 
 class ChoiceAdmin(admin.ModelAdmin):
