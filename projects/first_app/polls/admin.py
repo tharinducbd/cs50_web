@@ -3,6 +3,17 @@ from django.contrib import admin
 from .models import Question, Choice
 
 
+# 
+# class ChoiceInLine(admin.StackedInline):
+#     model = Choice
+#     extra = 3
+
+
+class ChoiceInLine(admin.TabularInline):
+    model = Choice
+    extra = 3
+
+
 class QuestionAdmin(admin.ModelAdmin):
     # Options for the 'list view' of questions
     ordering = ("id",)
@@ -14,8 +25,9 @@ class QuestionAdmin(admin.ModelAdmin):
     # Options for the 'detailed view' of questions: with 'field sets'
     fieldsets = [
         (None, {"fields": ["question_text",]}),
-        ("Date information", {"fields": ["pub_date", ]}),
+        ("Date information", {"fields": ["pub_date",], "classes": ["collapse",]}),
     ]
+    inlines = [ChoiceInLine,]
 
 
 class ChoiceAdmin(admin.ModelAdmin):
