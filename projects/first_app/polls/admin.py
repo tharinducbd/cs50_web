@@ -11,7 +11,7 @@ class QuestionAdmin(admin.ModelAdmin):
     # Options for the 'detailed view' of questions
     # fields = ["pub_date", "question_text"]
 
-    # Options for the 'detailed view' of questions: defining 'field sets'
+    # Options for the 'detailed view' of questions: with 'field sets'
     fieldsets = [
         (None, {"fields": ["question_text",]}),
         ("Date information", {"fields": ["pub_date", ]}),
