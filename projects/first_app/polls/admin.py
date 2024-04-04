@@ -3,12 +3,13 @@ from django.contrib import admin
 from .models import Question, Choice
 
 
-# 
+# 'Stacked In Line' view for Choice set in Question view
 # class ChoiceInLine(admin.StackedInline):
 #     model = Choice
 #     extra = 3
 
 
+# 'Tabular In Line' view for Choice set in Question view
 class ChoiceInLine(admin.TabularInline):
     model = Choice
     extra = 3
