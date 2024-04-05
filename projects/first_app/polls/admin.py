@@ -18,7 +18,7 @@ class ChoiceInLine(admin.TabularInline):
 class QuestionAdmin(admin.ModelAdmin):
     # Options for the 'list view' of questions
     ordering = ("id",)
-    list_display = ("question_text", "id", "pub_date",)
+    list_display = ("question_text", "id", "pub_date", "was_published_recently")
 
     # Options for the 'detailed view' of questions
     # fields = ["pub_date", "question_text"]
