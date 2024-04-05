@@ -19,6 +19,8 @@ class QuestionAdmin(admin.ModelAdmin):
     # Options for the 'list view' of questions
     ordering = ("id",)
     list_display = ("question_text", "id", "pub_date", "was_published_recently")
+    list_filter = ("pub_date",)
+    search_fields = ("question_text",)
 
     # Options for the 'detailed view' of questions
     # fields = ["pub_date", "question_text"]
