@@ -6,7 +6,13 @@
         <script>
 
             function hello() {
-                document.querySelector('h3').innerHTML = 'Happy coding!';
+                if (document.querySelector('h3').innerHTML === 'document.querySelector says: ...') {
+                    document.querySelector('h3').innerHTML = 'Happy coding!';
+                }
+                else {
+                    document.querySelector('h3').innerHTML = 'document.querySelector says: ...';
+                }
+                
             }
 
         </script>
