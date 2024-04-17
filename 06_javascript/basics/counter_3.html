@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Counter 2</title>
+        <title>Counter 3</title>
         <script>
 
             let counter = 0;
@@ -11,9 +11,15 @@
                 document.querySelector('h3').innerHTML = counter;
 
                 if (counter % 10 === 0) {
-                    alert(`Count is now ${counter}`)
+                    alert(`Count is now ${counter}`);
                 }
             }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelector('button').onclick = count;
+                // document.querySelector('button').addEventListener('click', count);
+            });
+            
 
         </script>
     </head>
@@ -21,6 +27,6 @@
     <body>
         <h2>The Counter</h2>
         <h3>0</h3>
-        <button onclick="count()">Count</button>
+        <button>Count</button>
     </body>
 </html>
