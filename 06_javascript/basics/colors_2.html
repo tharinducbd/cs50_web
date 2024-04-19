@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Colors</title>
+        <script>
+
+            // 'DOMConetntLoaded' to wait till the entire page is loaded
+            document.addEventListener('DOMContentLoaded', function() {
+                
+                // Get a list of all 'button' elements and 'forEach' button, run a function
+                document.querySelectorAll('button').forEach(function(button) {
+                    button.onclick = function() {
+                        document.querySelector('#hello').style.color = button.dataset.color;
+                        // .dataset- is how we access data- attrubutes
+                    };
+                });
+
+            });
+
+        </script>
+    </head>
+
+    <body>
+        <h3 id="hello">Hello!</h3>
+
+        <button data-color="red">Red</button>
+        <button data-color="green">Green</button>
+        <button data-color="blue">Blue</button>
+
+    </body>
+</html>
