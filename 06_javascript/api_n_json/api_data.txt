@@ -1,0 +1,2 @@
+Exchange Rates Data API
+API Key: MeFFEYHRk6sMbgfy1FCpWE5dq7ccu64V
