@@ -5,13 +5,15 @@
         <script>
 
             function hello() {
-                if (document.querySelector('h3').innerHTML === 'Hello!') {
-                    document.querySelector('h3').innerHTML = 'Goodbye!';
-                    document.querySelector('#change').innerHTML = 'Back to hi';
+                const heading = document.querySelector('h3');
+                const change_button = document.querySelector('#change');
+                if (heading.innerHTML === 'Hello!') {
+                    heading.innerHTML = 'Goodbye!';
+                    change_button = 'Back to hi';
                 }
                 else {
-                    document.querySelector('h3').innerHTML = 'Hello!';
-                    document.querySelector('#change').innerHTML = 'All done.';
+                    heading.innerHTML = 'Hello!';
+                    change_button.innerHTML = 'All done.';
                 }
             }
 
