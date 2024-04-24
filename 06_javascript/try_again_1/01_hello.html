@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Hello</title>
+        <script>
+
+            function hello() {
+                if (document.querySelector('h3').innerHTML === 'Hello!') {
+                    document.querySelector('h3').innerHTML = 'Goodbye!';
+                    document.querySelector('#change').innerHTML = 'Back to hi';
+                }
+                else {
+                    document.querySelector('h3').innerHTML = 'Hello!';
+                    document.querySelector('#change').innerHTML = 'All done.';
+                }
+            }
+
+        </script>
+        <body>
+            <h3>Hello!</h3>
+            <button id="change" onclick="hello()">All done.</button>
+        </body>
+    </head>
+</html>
