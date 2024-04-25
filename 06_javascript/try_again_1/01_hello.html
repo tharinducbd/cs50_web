@@ -7,10 +7,10 @@
             document.addEventListener('DOMContentLoaded', function() {
                 function hello() {
                     const heading = document.querySelector('h3');
-                    let change_button = document.querySelector('#change');
+                    const change_button = document.querySelector('#change');
                     if (heading.innerHTML === 'Hello!') {
                         heading.innerHTML = 'Goodbye!';
-                        change_button = 'Back to hi';
+                        change_button.innerHTML = 'Back to hi';
                     }
                     else {
                         heading.innerHTML = 'Hello!';
