@@ -2,31 +2,12 @@
 <html lang="en">
     <head>
         <title>Hello</title>
-        <script>
-
-            document.addEventListener('DOMContentLoaded', function() {
-
-                function hello() {
-                    const heading = document.querySelector('h3');
-                    const change_button = document.querySelector('#change');
-                    
-                    if (heading.innerHTML === 'Hello!') {
-                        heading.innerHTML = 'Goodbye!';
-                        change_button.innerHTML = 'Back to hi';
-                    }
-                    else {
-                        heading.innerHTML = 'Hello!';
-                        change_button.innerHTML = 'All done.';
-                    }
-                }
-
-                document.querySelector('#change').onclick = hello;
-            });
-
-        </script>
+        <script src="01_hello.js"></script>
         <body>
             <h3>Hello!</h3>
             <button id="change">All done.</button>
+            <h4>0</h4>
+            <button id="count">Count</button>
         </body>
     </head>
 </html>
