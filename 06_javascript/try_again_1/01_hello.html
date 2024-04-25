@@ -16,11 +16,15 @@
                     change_button.innerHTML = 'All done.';
                 }
             }
+            
+            document.addEventListener('DOMConetentLoaded', function() {
+                document.querySelector('#change').onclick = hello;
+            });
 
         </script>
         <body>
             <h3>Hello!</h3>
-            <button id="change" onclick="hello()">All done.</button>
+            <button id="change">All done.</button>
         </body>
     </head>
 </html>
