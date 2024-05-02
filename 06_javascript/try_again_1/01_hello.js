@@ -1,4 +1,4 @@
-// hello() to swithc between hello and goodbye
+// hello() to switch between hello and goodbye
 // counter() to count from zero
 
 function hello() {
