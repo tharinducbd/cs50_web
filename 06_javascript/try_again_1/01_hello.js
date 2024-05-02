@@ -28,4 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('#change').onclick = hello;
     document.querySelector('#count').onclick = count;
 
+    setInterval(hello, 3000);
+    setInterval(count, 2000);
+
 });
